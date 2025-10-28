@@ -28,11 +28,6 @@ Este template está **100% pronto** para ser usado no GitHub Classroom.
   - Modelos treinados (*.pkl, *.joblib)
   - Cache Python (__pycache__/)
 
-- ✅ **INSTRUCOES_PROFESSOR.md** - Guia completo para você
-  - Como configurar GitHub Classroom
-  - Como revisar trabalhos dos alunos
-  - Troubleshooting
-
 ### 📊 Dados (`data/`)
 
 - ✅ **data/raw/students_performance.csv** - Dataset fornecido

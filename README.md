@@ -1,6 +1,6 @@
 # 🎓 Projeto: Machine Learning - Previsão de Desempenho Acadêmico
 
-**Disciplina:** Introdução à Machine Learning - 2025.1
+**Disciplina:** Introdução à Machine Learning
 **Professor:** Professor Durval
 **Formato:** Trabalho em Grupo (até 5 pessoas)
 **Duração:** 4 semanas (1 etapa por semana)
@@ -14,6 +14,8 @@ Você acaba de aceitar o convite para o projeto final da disciplina! Este é um 
 ### 🎯 O Que Você Vai Fazer
 
 Desenvolver um modelo de **Machine Learning** para prever o desempenho acadêmico final de estudantes universitários, identificando aqueles em risco de baixo desempenho para permitir intervenções preventivas.
+
+### Exemplo de tipo de dataset
 
 **Tipo de problema:** Regressão (prever valores contínuos de 0-100)
 **Dataset:** 2.510 estudantes com 13 variáveis (hábitos de estudo, condições socioeconômicas, saúde)
