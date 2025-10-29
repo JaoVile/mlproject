@@ -448,6 +448,7 @@ TODOS os datasets contêm problemas intencionais (dados do mundo real):
 - [Pandas Docs](https://pandas.pydata.org/docs/)
 - [Scikit-learn Guide](https://scikit-learn.org/stable/user_guide.html)
 - [Seaborn Gallery](https://seaborn.pydata.org/examples/index.html)
+- [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
 
 ---
 
@@ -545,4 +546,4 @@ Vocês têm tudo que precisam para desenvolver um projeto completo de Machine Le
 
 **📌 Próximo Passo:** Leia **[etapas/etapa1/README.md](etapas/etapa1/README.md)** para começar!
 
-*Última atualização: Outubro 2027*
+*Última atualização: 29 de outubro 2025*
