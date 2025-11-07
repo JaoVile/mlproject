@@ -31,13 +31,13 @@ Cada etapa tem:
 
 | Semana | Etapa | Entregáveis | Apresentação |
 |:------:|-------|-------------|:------------:|
-| **1** | [📊 EDA - Análise Exploratória](#-etapa-1-eda) | `notebooks/01_EDA.ipynb` | ✅ Sim |
-| **2** | [🔧 Pré-processamento](#-etapa-2-pré-processamento) | Notebook + Dataset limpo | ✅ 10 min |
-| **3** | [🤖 Modelagem](#-etapa-3-modelagem) | `notebooks/03_Modelagem.ipynb` | ✅ 15 min |
-| **4** | [⚡ Otimização](#-etapa-4-otimização) | Notebook + Modelo final | ✅ 15 min |
+| **1** | [📊 EDA - Análise Exploratória](#-etapa-1-eda) | `notebooks/01_EDA.ipynb` | ✅ 5 min |
+| **2** | [🔧 Pré-processamento](#-etapa-2-pré-processamento) | Notebook + Dataset limpo + Scaler | ✅ 5 min |
+| **3** | [🤖 Modelagem](#-etapa-3-modelagem) | `notebooks/03_Modelagem.ipynb` | ✅ 10 min |
+| **4** | [⚡ Otimização](#-etapa-4-otimização) | Notebook + Modelo final | ✅ 10 min |
 | **5** | [🎤 Apresentação Final](#-etapa-5-apresentação-final) | Relatório completo | ✅ 20-25 min |
 
-**Total de apresentações:** 4 apresentações (Etapas 2, 3, 4, e 5)
+**Total de apresentações:** 5 apresentações (todas as etapas)
 
 ---
 
@@ -46,9 +46,11 @@ Cada etapa tem:
 ### 📊 Etapa 1: EDA
 
 **O que fazer:** Conhecer e entender profundamente os dados
-**Entregáveis:** `notebooks/01_EDA.ipynb`
-**Apresentação:** Não há apresentação nesta etapa
-**Peso:** 20%
+**Entregáveis:**
+- `notebooks/01_EDA.ipynb`
+- **🎤 Apresentação de 5 minutos**
+
+**Peso:** 20% (17% notebook + 3% apresentação)
 
 **Principais análises:**
 - Estatísticas descritivas
@@ -56,6 +58,11 @@ Cada etapa tem:
 - Distribuições
 - Outliers
 - Correlações
+
+**Apresentação deve incluir:**
+- 3-4 slides mostrando principais descobertas
+- 2-3 visualizações mais importantes
+- Principais problemas encontrados
 
 📄 **[Ver instruções completas →](etapas/etapa1/README.md)**
 
@@ -65,24 +72,33 @@ Cada etapa tem:
 
 **O que fazer:** Limpar e preparar dados para modelagem
 **Entregáveis:**
-- `notebooks/02_Preprocessamento.ipynb`
-- `data/processed/dataset_clean.csv`
-- **🎤 Apresentação de 10 minutos**
+- `notebooks/02_Preprocessamento.ipynb` (ou `.py`)
+- `data/students_clean.csv`
+- `models/scaler.pkl`
+- **🎤 Apresentação de 5 minutos**
 
-**Peso:** 20% (15% notebook + 5% apresentação)
+**Peso:** 20% (17% notebook + 3% apresentação)
+**Tempo estimado:** 6-8 horas
 
-**Principais tarefas:**
-- Tratamento de missing values
-- Tratamento de outliers
-- Encoding de categóricas
-- Feature engineering (criar novas features)
-- Normalização/Padronização
+**Principais tarefas (12 questões):**
+1. Tratamento de valores faltantes
+2. Detecção e remoção de outliers
+3. Limpeza de duplicatas
+4. **Análise de distribuições (skewness)** 🆕
+5. Encoding de categóricas (One-Hot)
+6. Feature engineering (criar 2 features)
+7. Normalização (StandardScaler)
 
 **Apresentação deve incluir:**
-- Problemas identificados
-- Decisões de tratamento e justificativas
-- Features criadas
-- Comparação antes vs depois
+- Problemas corrigidos (missing, outliers, duplicatas)
+- Transformações de distribuição aplicadas (skewness)
+- 2 features criadas e suas correlações
+- Dataset antes vs depois (tamanho, qualidade)
+
+**Novidades da Etapa 2:**
+- ✨ **Análise de assimetria (skewness)** - Detectar e corrigir distribuições enviesadas
+- ✨ **Transformações de distribuição** - Log, sqrt, Box-Cox para normalizar dados
+- ✨ **Visualizações comparativas** - Antes vs depois de cada transformação
 
 📄 **[Ver instruções completas →](etapas/etapa2/README.md)**
 
@@ -93,9 +109,9 @@ Cada etapa tem:
 **O que fazer:** Treinar e comparar múltiplos modelos de ML
 **Entregáveis:**
 - `notebooks/03_Modelagem.ipynb`
-- **🎤 Apresentação de 15 minutos**
+- **🎤 Apresentação de 10 minutos**
 
-**Peso:** 20% (15% notebook + 5% apresentação)
+**Peso:** 20% (17% notebook + 3% apresentação)
 
 **Principais tarefas:**
 - Modelo baseline (Regressão Linear)
@@ -120,9 +136,9 @@ Cada etapa tem:
 **Entregáveis:**
 - `notebooks/04_Otimizacao.ipynb`
 - `models/modelo_final.joblib`
-- **🎤 Apresentação de 15 minutos**
+- **🎤 Apresentação de 10 minutos**
 
-**Peso:** 20% (15% notebook + 5% apresentação)
+**Peso:** 20% (17% notebook + 3% apresentação)
 
 **Principais tarefas:**
 - Grid Search ou Random Search
@@ -297,10 +313,11 @@ git push origin main
 *Grupos menores: membros acumulam funções*
 
 **4. Apresentações: TODOS devem participar!**
-- Etapa 2: ~2-3 min por pessoa
-- Etapa 3: ~3 min por pessoa
-- Etapa 4: ~3 min por pessoa
-- Etapa 5: ~4-5 min por pessoa
+- Etapa 1: 5 min total (~1 min por pessoa)
+- Etapa 2: 5 min total (~1 min por pessoa)
+- Etapa 3: 10 min total (~2 min por pessoa)
+- Etapa 4: 10 min total (~2 min por pessoa)
+- Etapa 5: 20-25 min total (~4-5 min por pessoa)
 
 ---
 

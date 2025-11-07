@@ -1,203 +1,180 @@
-# 🔧 Etapa 2: Pré-processamento e Feature Engineering
+# 🔧 Etapa 2: Pré-processamento de Dados
 
 **Prazo de Entrega:** [Data será informada pelo professor]
-**Peso:** 25% da nota do projeto (2.5 pontos)
+**Peso:** 20% da nota do projeto (2.0 pontos)
+- 17% Notebook e arquivos (1.7 pontos)
+- 3% Apresentação (0.3 pontos)
+
+**Tempo estimado:** 6-8 horas
+
 **Entregáveis:**
-- `notebooks/02_Preprocessamento.ipynb`
-- `data/processed/dataset_clean.csv`
-- Apresentação de 10 minutos
+- `notebooks/02_Preprocessamento.ipynb` (ou `.py`)
+- `data/students_clean.csv`
+- `models/scaler.pkl`
+- **🎤 Apresentação de 5 minutos**
 
 ---
 
-## 🎯 Objetivos da Etapa
+## 🎯 Objetivo Simples
 
-Ao final desta etapa, você deve:
+Limpar e preparar os dados para a modelagem (Etapa 3).
 
-1. **Tratar problemas de qualidade** - Corrigir valores faltantes, outliers, inconsistências
-2. **Preparar dados para ML** - Encoding, normalização, seleção de features
-3. **Criar novas features** - Feature engineering para melhorar o modelo
-4. **Salvar dados limpos** - Dataset processado pronto para modelagem
+**Você vai:**
+
+💡 **Como fazer?** No arquivo [`INSTRUCOES_ALUNOS.md`](INSTRUCOES_ALUNOS.md) cada etapa traz:
+- o objetivo da tarefa,
+- exemplos de código prontos (copie, adapte e execute),
+- explicações simples sobre quando usar média ou mediana, como ler um boxplot, a diferença entre One-Hot e LabelEncoder, e por que salvar o scaler.
 
 ---
 
 ## 📋 O Que Você Vai Entregar
 
-### 1. Notebook Principal
-**`notebooks/02_Preprocessamento.ipynb`**
+### 1. Notebook: `notebooks/02_Preprocessamento.ipynb`
+- 12 questões respondidas
+- 4 visualizações criadas (antes/depois)
 
-Seções obrigatórias:
-1. Importação e Carregamento
-2. Tratamento de Valores Faltantes
-3. Tratamento de Outliers
-4. Encoding de Variáveis Categóricas
-5. Normalização/Padronização
-6. Feature Engineering (criação de novas features)
-7. Seleção de Features
-8. Divisão Treino/Validação/Teste
-9. Salvamento dos Dados Processados
+### 2. Dataset limpo: `data/students_clean.csv`
+- Pronto para usar na Etapa 3
 
-### 2. Dataset Limpo
-**`data/processed/dataset_clean.csv`**
-- Dados prontos para modelagem
-- Sem valores faltantes
-- Features numéricas
-- Normalizado/padronizado (se necessário)
+### 3. Scaler salvo: `models/scaler.pkl`
+- Para reutilizar na Etapa 3
 
-### 3. Apresentação (10 minutos) 🎤
+### 4. Apresentação: 5 minutos 🎤
 
 **O que apresentar:**
-- Principais problemas identificados na Etapa 1
-- Decisões de tratamento tomadas e justificativas
-- Features criadas e por quê
-- Comparação: dataset antes vs depois
-- Estatísticas finais do dataset limpo
+- **Slide 1:** Problemas corrigidos
+  - Quantos missing, outliers, duplicatas removidos
+- **Slide 2:** Transformações de distribuição (skewness)
+  - Quais colunas transformou e por quê
+  - Mostrar 1 gráfico antes/depois
+- **Slide 3:** Features criadas
+  - Liste as 2 features e suas correlações com target
+- **Slide 4:** Resultado final
+  - Dataset antes: X linhas, Y colunas
+  - Dataset depois: X linhas, Z colunas
+  - Pronto para modelagem ✅
 
 **Formato:**
-- 5-7 slides (PowerPoint, Google Slides, ou PDF)
-- Todos os membros do grupo devem participar
-- Demonstre visualizações comparativas
-- Foque nas decisões técnicas (não leia código!)
-
-**Critérios de avaliação da apresentação:**
-- Clareza na comunicação (30%)
-- Justificativa técnica das decisões (40%)
-- Participação de todos os membros (20%)
-- Qualidade visual dos slides (10%)
+- 4 slides (PowerPoint, Google Slides, ou PDF)
+- Máximo 5 minutos
+- Todos os membros devem participar (~1 min cada)
 
 ---
 
-## 🔍 Análises Obrigatórias
+## 📖 Instruções Detalhadas
 
-### 1. Tratamento de Missing Values
+👉 **Abra o arquivo:** [`INSTRUCOES_ALUNOS.md`](INSTRUCOES_ALUNOS.md)
 
-**Decisões a tomar:**
-- Qual estratégia usar? (remoção, imputação média/mediana/moda, KNN)
-- Por quê essa estratégia?
-- Qual o impacto no dataset?
-
-**Pesquise:**
-- Documentação do `sklearn.impute`
-- Diferentes estratégias de imputação
-- Quando usar cada uma
-- Como justificar sua escolha tecnicamente
-
-### 2. Tratamento de Outliers
-
-**Decisões a tomar:**
-- Remover ou manter?
-- Winsorization? Capping?
-- Justifique!
-
-### 3. Encoding de Categóricas
-
-**Obrigatório:**
-- One-Hot Encoding para categóricas nominais
-- Label Encoding ou Ordinal Encoding para ordinais
-- Explique qual variável recebeu qual tratamento
-
-**Pesquise:**
-- Diferença entre variáveis nominais e ordinais
-- One-Hot Encoding vs Label Encoding
-- Documentação do `sklearn.preprocessing`
-- Quando usar cada tipo de encoding
-
-### 4. Normalização/Padronização
-
-**Decisões a tomar:**
-- StandardScaler ou MinMaxScaler?
-- Aplicar em quais variáveis?
-- Por quê?
-
-### 5. Feature Engineering
-
-**Criar pelo menos 3 novas features:**
-
-Exemplos:
-- Razões/proporções (ex: `study_efficiency = previous_scores / study_hours_week`)
-- Binnings (ex: categorizar idade em faixas)
-- Interações (ex: `parental_education * family_income`)
-- Agregações
-
-**Importante:** Justifique cada feature criada!
-
-### 6. Seleção de Features
-
-**Análises obrigatórias:**
-- Correlação com target
-- Variance Threshold (remover features com variância zero)
-- Análise de importância (opcional: usar modelo simples)
-
-### 7. Divisão dos Dados
-
-**Obrigatório:**
-- Dividir em 70% treino, 15% validação, 15% teste
-- Usar `random_state` fixo para reprodutibilidade
-
-**Pesquise:**
-- Documentação do `sklearn.model_selection.train_test_split`
-- Como fazer divisão em 3 conjuntos (treino/validação/teste)
-- Importância do `random_state`
+Lá você vai encontrar:
+- **12 questões** divididas em 7 partes
+- Código de exemplo pronto para copiar
+- Links para documentação oficial
+- Estrutura completa da apresentação
 
 ---
 
 ## ✅ Critérios de Avaliação
 
+### Notebook e Arquivos (17% = 1.7 pontos)
+
 | Critério | Peso | O Que Avaliamos |
 |----------|:----:|-----------------|
-| **Notebook Técnico** | 50% | Código funcional, decisões justificadas, documentação |
-| **Dataset Limpo** | 20% | Qualidade do dataset final, pronto para modelagem |
-| **Feature Engineering** | 15% | Criatividade, features úteis, justificativas |
-| **Apresentação** | 15% | Clareza, participação, visualizações |
+| **12 Questões respondidas** | 60% | Código funciona + respostas corretas |
+| **4 Visualizações** | 20% | Gráficos antes/depois (missing, outliers, skewness, normalização) |
+| **Dataset limpo** | 15% | `students_clean.csv` salvo corretamente |
+| **Scaler salvo** | 5% | `scaler.pkl` salvo |
+
+### Apresentação (3% = 0.3 pontos)
+
+| Critério | Peso | O Que Avaliamos |
+|----------|:----:|-----------------|
+| **Conteúdo** | 50% | Mostrou resultados relevantes (problemas corrigidos, transformações, features) |
+| **Clareza** | 30% | Explicação clara e objetiva |
+| **Participação** | 20% | Todos os membros apresentaram |
+
+---
+
+## 🚀 Como Começar
+
+### Passo 1: Copiar Template
+```bash
+cd notebooks
+cp 02_Preprocessamento_TEMPLATE.py 02_Preprocessamento.py
+```
+
+### Passo 2: Abrir no Jupyter/VS Code
+```bash
+# Opção 1: Jupyter Notebook
+jupyter notebook 02_Preprocessamento.py
+
+# Opção 2: VS Code
+code 02_Preprocessamento.py
+```
+
+### Passo 3: Seguir os TODOs
+- O template tem comentários `# TODO:` onde você deve completar
+- Siga a ordem das questões em `INSTRUCOES_ALUNOS.md`
 
 ---
 
 ## 📦 Como Entregar
 
-### 1. Commit e Push
 ```bash
-git add notebooks/02_Preprocessamento.ipynb
-git add data/processed/dataset_clean.csv
+# 1. Adicionar arquivos
+git add notebooks/02_Preprocessamento.py
+git add data/students_clean.csv
+git add models/scaler.pkl
+
+# 2. Commit
 git commit -m "feat: Completa Etapa 2 - Pré-processamento"
+
+# 3. Push
 git push origin main
 ```
 
-### 2. Apresentação
-- Upload dos slides em `docs/apresentacao_etapa2.pdf`
-- Apresentar na aula marcada pelo professor
+---
+
+## ✅ Checklist Antes de Entregar
+
+### Código
+- [ ] 12 questões respondidas
+- [ ] 4 visualizações criadas (missing, outliers, skewness, normalização)
+- [ ] Dataset salvo em `data/students_clean.csv`
+- [ ] Scaler salvo em `models/scaler.pkl`
+- [ ] Notebook executa sem erros ("Run All")
+- [ ] Código está no GitHub
+
+### Apresentação
+- [ ] 4 slides preparados
+- [ ] Apresentação ensaiada (máximo 5 min)
+- [ ] Todos os membros sabem sua parte
+- [ ] Slides salvos em `docs/apresentacao_etapa2.pdf`
 
 ---
 
-## 💡 Dicas Importantes
+## 💡 Dicas
 
-**DO:**
-✅ Justifique TODAS as decisões de tratamento
-✅ Compare estatísticas antes vs depois
-✅ Documente o raciocínio em markdown
-✅ Salve transformações (scalers, encoders) para reutilizar
-✅ Execute "Restart & Run All" antes de entregar
+✅ **Siga o template** - Não precisa começar do zero
+✅ **Use os exemplos** - Código de exemplo está nos comentários
+✅ **Execute célula por célula** - Não tente fazer tudo de uma vez
+✅ **Consulte os links** - Documentação do scikit-learn ajuda
 
-**DON'T:**
-❌ Remover dados sem justificativa
-❌ Aplicar tratamentos sem entender o impacto
-❌ Esquecer de documentar o processo
-❌ Deixar a apresentação para última hora
+❌ **Não copie sem entender** - Você vai precisar explicar
+❌ **Não pule questões** - Todas são obrigatórias
+❌ **Não esqueça de salvar** - Dataset e scaler são entregáveis
 
 ---
 
 ## 🆘 Precisa de Ajuda?
 
-**Dúvidas comuns:**
-- Qual imputação usar? → Depende do tipo de missing (MCAR/MAR/MNAR)
-- Devo remover outliers? → Só se forem erros de medição
-- Quantas features criar? → Pelo menos 3, mas qualidade > quantidade
-
-**Consulte:**
-- Scikit-learn docs: https://scikit-learn.org/stable/modules/preprocessing.html
-- Material da aula de pré-processamento
-- Professor no horário de atendimento
+1. Leia `INSTRUCOES_ALUNOS.md` com atenção
+2. Veja o código de exemplo no template
+3. Consulte os links de documentação
+4. Pergunte ao professor no horário de atendimento
 
 ---
 
 **Boa sorte!** 🚀
 
-*Última atualização: Outubro 2027*
+*Última atualização: Novembro 2025*
