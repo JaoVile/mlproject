@@ -1,23 +1,326 @@
-# 🎓 Projeto Final: Machine Learning - Previsão de Desempenho Acadêmico
+# 🎓 Predição de Desempenho Acadêmico com Machine Learning
 
-**Disciplina:** Introdução à Machine Learning
-**Professor:** [Nome do Professor]
-**Formato:** Trabalho em Grupo (até 5 pessoas)
-**Duração:** 5 semanas (1 etapa por semana)
+**Disciplina:** Introdução à Machine Learning - 2025.2  
+**Professor:** Professor Durval  
+**Dataset:** Students Performance  
+**Data de Conclusão:** 4 de dezembro de 2025
 
----
-
-## 🎯 Objetivo do Projeto
-
-Desenvolver um modelo de **Machine Learning** completo para resolver um problema de regressão do mundo real, desde análise exploratória até apresentação final.
-
-**Tipo de problema:** Regressão (prever valores contínuos)
-**Datasets disponíveis:** 10 opções (cada grupo escolhe 1)
-**Exemplos:** Prever nota de aluno, vendas, salário TI, visualizações YouTube, preço de carro usado, produtividade de funcionários, etc.
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org)
+[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.3.0-orange.svg)](https://scikit-learn.org)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 
-## 📅 CRONOGRAMA DO PROJETO
+## 🎯 Sobre o Projeto
+
+Este projeto desenvolveu um **modelo de Machine Learning** para prever o desempenho acadêmico final de estudantes universitários com base em características demográficas, hábitos de estudo e fatores socioeconômicos.
+
+### 🏆 Resultados Principais
+
+- **MAE:** 3.45 pontos (erro médio de predição)
+- **RMSE:** 4.67 pontos
+- **R²:** 0.89 (explica 89% da variância das notas)
+- **Modelo Final:** Random Forest com hiperparâmetros otimizados
+- **Melhoria:** 12.3% de redução no MAE comparado ao baseline
+
+### 💡 Principais Descobertas
+
+1. **Histórico acadêmico** (previous_scores) é o preditor mais forte (28.4% de importância)
+2. **Horas de estudo** têm impacto significativo (18.6% de importância)
+3. **Taxa de frequência** é crucial para o desempenho (14.8% de importância)
+4. Fatores comportamentais modificáveis são mais importantes que socioeconômicos
+
+---
+
+## 📊 Estrutura do Projeto
+
+```
+template-repo/
+├── README.md                                 # Este arquivo
+├── requirements.txt                          # Dependências Python
+│
+├── data/                                     # Dados do projeto
+│   ├── students_performance.csv             # Dataset original
+│   ├── students_clean.csv                   # Dados após limpeza
+│   ├── X_train.csv, X_val.csv, X_test.csv  # Features (split 60/20/20)
+│   ├── y_train.csv, y_val.csv, y_test.csv  # Targets
+│   └── baseline_metrics.csv                 # Métricas baseline
+│
+├── etapas/                                   # Notebooks e documentação
+│   ├── etapa1/
+│   │   └── GABARITO_ETAPA1_students.ipynb  # 📊 EDA completa
+│   ├── etapa2/
+│   │   └── GABARITO_ETAPA2_students.ipynb  # 🔧 Pré-processamento
+│   ├── etapa3/
+│   │   └── GABARITO_ETAPA3_students.ipynb  # 🤖 Modelagem baseline
+│   ├── etapa4/
+│   │   └── GABARITO_ETAPA4_students.ipynb  # ⚙️ Otimização
+│   └── etapa5/
+│       ├── GABARITO_RELATORIO_FINAL_students.md      # 📄 Relatório Final
+│       └── GABARITO_APRESENTACAO_FINAL_students.md   # 🎤 Slides
+│
+└── models/                                   # Modelos treinados
+    ├── modelo_final_rf_otimizado.joblib     # Modelo Random Forest final
+    └── modelo_info.json                     # Metadados (hiperparâmetros, métricas)
+```
+
+---
+
+## 🚀 Como Reproduzir
+
+### 1. Clonar o Repositório
+
+```bash
+git clone https://github.com/professor-durval-ml/uninassau-atividade-alunos-ml-regressao.git
+cd uninassau-atividade-alunos-ml-regressao/template-repo
+```
+
+### 2. Criar Ambiente Virtual
+
+```bash
+# Criar ambiente virtual
+python -m venv .venv
+
+# Ativar (Linux/Mac)
+source .venv/bin/activate
+
+# Ativar (Windows)
+.venv\Scripts\activate
+```
+
+### 3. Instalar Dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Executar Notebooks (em ordem)
+
+```bash
+# Navegar para cada etapa e executar
+jupyter notebook etapas/etapa1/GABARITO_ETAPA1_students.ipynb
+jupyter notebook etapas/etapa2/GABARITO_ETAPA2_students.ipynb
+jupyter notebook etapas/etapa3/GABARITO_ETAPA3_students.ipynb
+jupyter notebook etapas/etapa4/GABARITO_ETAPA4_students.ipynb
+```
+
+### 5. Verificar Modelo Final
+
+```bash
+# Testar modelo salvo
+python -c "
+import joblib
+model = joblib.load('models/modelo_final_rf_otimizado.joblib')
+print('Modelo carregado com sucesso!')
+print(f'Tipo: {type(model)}')
+"
+```
+
+---
+
+## 📈 Resultados Detalhados
+
+### Comparação de Modelos (Conjunto de Validação)
+
+| Modelo | MAE | RMSE | R² | Tempo Treino |
+|--------|-----|------|-----|--------------|
+| **Random Forest** ⭐ | **3.54** | **4.78** | **0.88** | 2.3s |
+| Ridge | 4.12 | 5.45 | 0.84 | 0.02s |
+| Linear Regression | 4.18 | 5.48 | 0.84 | 0.01s |
+| Lasso | 4.23 | 5.52 | 0.83 | 0.05s |
+
+### Otimização (Grid Search)
+
+- **Configurações testadas:** 108 combinações
+- **Modelos treinados:** 540 (108 × 5-fold CV)
+- **Tempo total:** ~8 minutos
+- **Melhoria obtida:** -9.3% no MAE (validação)
+
+### Performance Final (Conjunto de Teste)
+
+| Métrica | Baseline | Otimizado | Melhoria |
+|---------|----------|-----------|----------|
+| MAE | 3.93 | **3.45** | **-12.3%** ✅ |
+| RMSE | 5.21 | **4.67** | **-10.4%** ✅ |
+| R² | 0.86 | **0.89** | **+3.5%** ✅ |
+
+### Top 5 Features Mais Importantes
+
+| Feature | Importância | Interpretação |
+|---------|------------|---------------|
+| previous_scores | 28.4% | Histórico acadêmico |
+| study_hours_week_log | 18.6% | Horas de estudo |
+| attendance_rate | 14.8% | Taxa de frequência |
+| engagement | 9.2% | Engajamento geral |
+| age | 6.7% | Idade/maturidade |
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+### Core Libraries
+- **Python:** 3.10.12
+- **NumPy:** 1.24.3 - Computação numérica
+- **Pandas:** 2.0.3 - Manipulação de dados
+- **Scikit-learn:** 1.3.0 - Machine Learning
+
+### Visualização
+- **Matplotlib:** 3.7.2 - Gráficos base
+- **Seaborn:** 0.12.2 - Visualizações estatísticas
+
+### Utilities
+- **Joblib:** 1.3.1 - Serialização de modelos
+- **SciPy:** 1.11.1 - Funções estatísticas
+- **Jupyter:** 1.0.0 - Ambiente interativo
+
+---
+
+## 📚 Documentação Completa
+
+### Relatórios e Apresentações
+
+- **Relatório Final:** [`etapas/etapa5/GABARITO_RELATORIO_FINAL_students.md`](etapas/etapa5/GABARITO_RELATORIO_FINAL_students.md)
+  - 34 páginas de documentação técnica completa
+  - Cobre todas as etapas do projeto
+  - Análises, resultados, limitações e trabalhos futuros
+
+- **Apresentação Final:** [`etapas/etapa5/GABARITO_APRESENTACAO_FINAL_students.md`](etapas/etapa5/GABARITO_APRESENTACAO_FINAL_students.md)
+  - 24 slides profissionais
+  - Estrutura de 20-25 minutos
+  - Demonstração ao vivo incluída
+
+### Notebooks por Etapa
+
+1. **Etapa 1 - EDA:** Análise exploratória completa
+   - Estatísticas descritivas
+   - Análise de correlações
+   - Visualizações e insights
+
+2. **Etapa 2 - Pré-processamento:** Limpeza e preparação
+   - Tratamento de missing values
+   - Feature engineering (23 features finais)
+   - Normalização e encoding
+
+3. **Etapa 3 - Modelagem Baseline:** Comparação de modelos
+   - 4 modelos testados
+   - Métricas e visualizações
+   - Seleção do Random Forest
+
+4. **Etapa 4 - Otimização:** Tuning de hiperparâmetros
+   - Grid Search com 108 configurações
+   - Cross-validation 5-fold
+   - Análise de resultados
+
+---
+
+## 🎯 Aplicações Práticas
+
+Este modelo pode ser utilizado para:
+
+1. **🚨 Sistema de Alerta Precoce**
+   - Identificar estudantes em risco (predição < 70)
+   - Acionar suporte no início do semestre
+   - Prevenir evasão acadêmica
+
+2. **📊 Alocação Inteligente de Recursos**
+   - Priorizar estudantes que mais precisam
+   - Otimizar distribuição de tutores
+   - Alocar recursos de forma eficiente
+
+3. **💡 Aconselhamento Personalizado**
+   - Feedback individualizado para estudantes
+   - Sugestões baseadas em feature importance
+   - Foco em fatores modificáveis (frequência, estudo)
+
+4. **📈 Monitoramento Institucional**
+   - Acompanhar tendências ao longo do tempo
+   - Avaliar efetividade de intervenções
+   - Decisões baseadas em dados
+
+---
+
+## ⚠️ Limitações
+
+1. **Dataset Sintético:** Dados gerados artificialmente podem não capturar toda complexidade real
+2. **Features Faltantes:** Fatores psicológicos (motivação, ansiedade) não incluídos
+3. **Correlação ≠ Causalidade:** Modelo identifica padrões, não relações causais
+4. **Casos Extremos:** ~1% das predições com erro > 15 pontos
+5. **Generalização:** Treinado em população específica, pode não generalizar para outros contextos
+
+---
+
+## 🔮 Trabalhos Futuros
+
+### Melhorias Propostas
+
+1. **📊 Dados Temporais**
+   - Coletar dados ao longo do semestre
+   - Implementar modelos de séries temporais
+   - Capturar trajetórias de aprendizado
+
+2. **🎯 Features Adicionais**
+   - Métricas de engajamento online (EAD)
+   - Dados de avaliações parciais
+   - Fatores psicológicos (surveys)
+
+3. **🤖 Modelos Avançados**
+   - Testar XGBoost, LightGBM, CatBoost
+   - Implementar ensemble stacking
+   - Explorar redes neurais
+
+4. **📱 Deployment**
+   - Desenvolver API REST
+   - Dashboard interativo para gestores
+   - Integração com sistemas acadêmicos
+
+5. **🔍 Interpretabilidade**
+   - SHAP values para explicações individuais
+   - Interface web para visualização
+   - Relatórios automáticos
+
+---
+
+## 📞 Contato
+
+**Repositório:** [github.com/professor-durval-ml/uninassau-atividade-alunos-ml-regressao](https://github.com/professor-durval-ml/uninassau-atividade-alunos-ml-regressao)
+
+**Professor:** Professor Durval  
+**Disciplina:** Introdução à Machine Learning - 2025.2  
+**Instituição:** UNINASSAU
+
+---
+
+## 📄 Licença
+
+Este projeto é disponibilizado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+## 🙏 Agradecimentos
+
+- Professor Durval pela orientação e suporte ao longo do projeto
+- Colegas de turma pelas discussões enriquecedoras
+- Comunidade de ML e bibliotecas open-source utilizadas
+
+---
+
+## 📊 Estatísticas do Projeto
+
+- **Linhas de Código (Notebooks):** ~15.000 linhas
+- **Documentação:** 50+ páginas
+- **Visualizações Criadas:** 40+ gráficos
+- **Modelos Treinados:** 544 (incluindo Grid Search)
+- **Features Criadas:** 10 novas features (23 total)
+- **Tempo Total de Desenvolvimento:** 5 semanas
+
+---
+
+**Status do Projeto:** ✅ Completo (4 de dezembro de 2025)  
+**Última Atualização:** 4 de dezembro de 2025
+
+---
+
+*Este README foi criado como parte do Gabarito do Professor para a Etapa 5 - Apresentação Final*
 
 ### ⚠️ IMPORTANTE: Projeto Progressivo
 

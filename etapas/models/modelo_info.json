@@ -1,0 +1,49 @@
+{
+    "modelo": "RandomForestRegressor",
+    "data_treinamento": "2025-12-04 22:09:13",
+    "hiperparametros": {
+        "max_depth": 20,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "n_estimators": 300
+    },
+    "metricas_validacao": {
+        "MAE": 3.460333774045057,
+        "MAE_baseline": 3.354092204408818
+    },
+    "metricas_teste": {
+        "MAE": 3.2046830586036754,
+        "RMSE": 4.310356503640544,
+        "R2": 0.6673041713651384
+    },
+    "melhoria_vs_baseline": {
+        "MAE": "+2.44%",
+        "RMSE": "+2.21%",
+        "R2": "+2.34%"
+    },
+    "features": [
+        "age",
+        "attendance_rate",
+        "previous_scores",
+        "study_hours_week_log",
+        "sleep_hours_sqrt",
+        "gender_Female",
+        "gender_M",
+        "gender_Male",
+        "parental_education_Doctorate",
+        "parental_education_High_School",
+        "parental_education_Master",
+        "extracurricular_Yes",
+        "tutoring_Yes",
+        "internet_quality_Good",
+        "internet_quality_Poor",
+        "family_income_Low",
+        "family_income_Medium",
+        "health_status_Good",
+        "health_status_Poor",
+        "study_sleep_ratio",
+        "engagement"
+    ],
+    "n_features": 21,
+    "n_samples_treino": 1996
+}
