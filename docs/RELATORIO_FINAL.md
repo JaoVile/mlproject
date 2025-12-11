@@ -95,7 +95,7 @@ O modelo final foi avaliado no conjunto de **Teste** (20% dos dados originais), 
 ### 5.2 Análise de Resíduos
 A análise gráfica abaixo demonstra a qualidade das previsões:
 
-![Análise de Resíduos](../reports/figures/analise_residuos.png)
+![Análise de Resíduos](figures/analise_residuos.png)
 
 * **Gráfico Predito vs. Real:** A maioria dos pontos segue a linha diagonal, indicando boas previsões.
 * **Histograma de Erros:** A distribuição dos erros é centrada em zero, indicando que o modelo não é tendencioso (não "chuta" sempre alto ou sempre baixo).
