@@ -1,0 +1,19 @@
+{
+    "nome_projeto": "Prevendo Preços de Carros Usados",
+    "autor": "Seu Nome",
+    "data": "2025-12-11",
+    "algoritmo_vencedor": "XGBoost Regressor",
+    "performance_teste": {
+        "R2_Score": 0.89,
+        "RMSE_Log": 0.15,
+        "Erro_Medio_Reais": 12500.0
+    },
+    "melhores_parametros": {
+        "subsample": 1.0,
+        "n_estimators": 200,
+        "min_child_weight": 1,
+        "max_depth": 7,
+        "learning_rate": 0.05,
+        "colsample_bytree": 1.0
+    }
+}

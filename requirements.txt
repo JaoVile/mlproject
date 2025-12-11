@@ -32,7 +32,7 @@ scipy==1.10.1
 tqdm==4.65.0
 
 # Interpretabilidade (opcional - para bônus)
-# shap==0.41.0
+shap==0.41.0
 
 # Deploy (opcional - para bônus)
 streamlit==1.22.0
